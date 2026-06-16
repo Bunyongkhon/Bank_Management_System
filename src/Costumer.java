@@ -1,3 +1,4 @@
+
 public class Costumer {
     private int customerId;
     private String fullName;
@@ -22,4 +23,5 @@ public class Costumer {
     public String getPhone(){
         return phone;
     }
+
 }
