@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class CustomerCDB {
     public void addCustomer(Costumer costumer){
@@ -18,6 +19,30 @@ public class CustomerCDB {
            }
         }
         catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void viewCustomers(){
+        String sql = "SELECT * FROM customers";
+
+        try(
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                ResultSet rs = pstmt.executeQuery();
+                ) {
+
+            System.out.println("\n ===== CUSTOMER LIST =====");
+            while (rs.next()){
+                System.out.println(
+                        rs.getInt("customer_id")+
+                                " | "+
+                                rs.getString("full_name")+
+                                " | "+
+                                rs.getString("phone")
+                );
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
