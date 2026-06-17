@@ -24,7 +24,7 @@ public class CustomerCDB {
 
     }
     public void viewCustomers(){
-        String sql = "SELECT * FROM customers";
+        String sql = "SELECT * FROM customers ORDER BY customer_id";
 
         try(
                 Connection conn = DatabaseConnection.getConnection();

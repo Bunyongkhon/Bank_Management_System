@@ -14,6 +14,7 @@ public class Main {
            System.out.println("1.INPUT CUSTOMER ");
            System.out.println("2.SHOW CUSTOMER ");
            System.out.println("3.CREATE ACCOUNT");
+           System.out.println("4.DEPOSIT MONEY");
            System.out.print("Choose Option --> :  ");
            choice = sc.nextInt();
 
@@ -42,9 +43,17 @@ public class Main {
                    int customerId = sc.nextInt();
                    accountCDB.createAccount(customerId);
                }break;
+               case 4 :{
+                   System.out.println("==== DEPOSIT ====");
+                   System.out.print("Enter Account Number :");
+                   int accountId = sc.nextInt();
+                   System.out.print("Enter Amount :");
+                   double amount = sc.nextDouble();
+
+                   accountCDB.deposit(accountId,amount);
+               }
            }
 
-
-       }while (choice < 4);
+       }while (choice < 6);
     }
 }

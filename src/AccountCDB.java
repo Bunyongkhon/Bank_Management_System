@@ -18,4 +18,26 @@ public class AccountCDB {
             e.printStackTrace();
         }
     }
+    public void deposit(int accountId, double amount ){
+        String sql = "UPDATE accounts "+
+                    "SET balance = balance + ?" +
+                    "WHERE account_id = ?";
+
+        try(
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                ){
+            pstmt.setDouble(1,amount);
+            pstmt.setInt(2,accountId);
+
+            int rows = pstmt.executeUpdate();
+            if (rows >0 ){
+                System.out.println("Deposit successful");
+            }else {
+                System.out.println("Account not found!");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
