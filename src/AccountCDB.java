@@ -20,7 +20,7 @@ public class AccountCDB {
     }
     public void deposit(int accountId, double amount ){
         String sql = "UPDATE accounts "+
-                    "SET balance = balance + ?" +
+                    "SET balance = balance + ? " +
                     "WHERE account_id = ?";
 
         try(
@@ -32,6 +32,8 @@ public class AccountCDB {
 
             int rows = pstmt.executeUpdate();
             if (rows >0 ){
+                TransactionCDB transactionCDB = new TransactionCDB();
+                transactionCDB.addTransaction(accountId,"DEPOSIT",amount);
                 System.out.println("Deposit successful");
             }else {
                 System.out.println("Account not found!");
