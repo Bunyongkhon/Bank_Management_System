@@ -8,6 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         CustomerCDB customerCDB = new CustomerCDB();
         AccountCDB accountCDB = new AccountCDB();
+        TransactionCDB transactionCDB = new TransactionCDB();
 
        do {
            System.out.println("========= MENU =========");
@@ -15,6 +16,7 @@ public class Main {
            System.out.println("2.SHOW CUSTOMER ");
            System.out.println("3.CREATE ACCOUNT");
            System.out.println("4.DEPOSIT MONEY");
+           System.out.println("5.VIEW TRANSACTION");
            System.out.print("Choose Option --> :  ");
            choice = sc.nextInt();
 
@@ -51,6 +53,10 @@ public class Main {
                    double amount = sc.nextDouble();
 
                    accountCDB.deposit(accountId,amount);
+               }break;
+               case 5 :{
+                   System.out.println("==== TRANSACTION ====");
+                   transactionCDB.viewTransactions();
                }
            }
 
