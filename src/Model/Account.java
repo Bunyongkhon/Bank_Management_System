@@ -1,3 +1,5 @@
+package Model;
+
 public class Account {
 
     private int accountId, customerId;
@@ -9,16 +11,16 @@ public class Account {
         this.balance = balance;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
+//    public int getAccountId() {
+//        return accountId;
+//    }
+//
+//    public int getCustomerId() {
+//        return customerId;
+//    }
+//
+//    public double getBalance() {
+//        return balance;
+//    }
 }
 

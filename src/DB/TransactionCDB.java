@@ -1,3 +1,5 @@
+package DB;
+import config.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +38,7 @@ public class TransactionCDB {
             while (rs.next()){
                 System.out.println(
                         "Transaction ID :"+rs.getInt("transaction_id")
-                        +"| Account ID :" +rs.getInt("account_id")
+                        +"| Model.Account ID :" +rs.getInt("account_id")
                         +"| Type : "+rs.getString("transaction_type")
                         +"| Amount :"+rs.getDouble("amount")
                         +"| Date :" +rs.getDate("transaction_date")

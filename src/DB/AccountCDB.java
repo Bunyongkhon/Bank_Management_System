@@ -1,3 +1,6 @@
+package DB;
+
+import config.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -6,18 +9,19 @@ public class AccountCDB {
         String sql = "INSERT INTO accounts(customer_id, balance) VALUES(?, 0)";
         try(
                 Connection conn = DatabaseConnection.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql);
+                PreparedStatement pstmt = conn.prepareStatement(sql)
                 ) {
             pstmt.setInt(1,customerId);
             int rows = pstmt.executeUpdate();
             if (rows >0){
-                System.out.println("Account created successfully!");
+                System.out.println("Model.Account created successfully!");
             }
 
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+
     public void deposit(int accountId, double amount ){
         String sql = "UPDATE accounts "+
                     "SET balance = balance + ? " +
@@ -36,7 +40,7 @@ public class AccountCDB {
                 transactionCDB.addTransaction(accountId,"DEPOSIT",amount);
                 System.out.println("Deposit successful");
             }else {
-                System.out.println("Account not found!");
+                System.out.println("Model.Account not found!");
             }
         }catch (Exception e){
             e.printStackTrace();
